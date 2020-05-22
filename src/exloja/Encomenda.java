@@ -18,6 +18,7 @@ public class Encomenda implements Serializable{
     private ArrayList<Produto> Produtos=new ArrayList<Produto>();
     private Date data;
     private int codigo_cliente;
+    private String estado;
 
     public int getNumero() {
         return numero;
@@ -50,7 +51,16 @@ public class Encomenda implements Serializable{
    public void setCodigo_Cliente(int cc){
        this.codigo_cliente=cc;
    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
     
+   
 
     public Encomenda(int numero, ArrayList<Produto> lista, int cc) {
         this.numero = numero;
