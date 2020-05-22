@@ -31,6 +31,8 @@ public class ExLoja implements Serializable {
     private static ArrayList<Cliente> lista_Clientes = new ArrayList<Cliente>();
     private static ArrayList<Encomenda> lista_Encomendas = new ArrayList<Encomenda>();
     private static ArrayList<Promocao> lista_Promocoes = new ArrayList<Promocao>();
+    private static ArrayList<Pagamento> lista_Pagamentos = new ArrayList<Pagamento>();
+    private static ArrayList<Conta> lista_Contas = new ArrayList<Conta>();
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         ler();
@@ -144,7 +146,7 @@ public class ExLoja implements Serializable {
                 arq = new FileInputStream(file);
                 ObjectInputStream obj = new ObjectInputStream(arq);
                 while (arq.available() > 0) {
-                    lista_Produtos.add((Produto) obj.readObject());
+                    lista_Clientes.add((Cliente) obj.readObject());
                 }
             } else {
                 file.createNewFile();
@@ -165,7 +167,7 @@ public class ExLoja implements Serializable {
                 arq = new FileInputStream(file);
                 ObjectInputStream obj = new ObjectInputStream(arq);
                 while (arq.available() > 0) {
-                    lista_Produtos.add((Produto) obj.readObject());
+                    lista_Encomendas.add((Encomenda) obj.readObject());
                 }
             } else {
                 file.createNewFile();
@@ -186,7 +188,7 @@ public class ExLoja implements Serializable {
                 arq = new FileInputStream(file);
                 ObjectInputStream obj = new ObjectInputStream(arq);
                 while (arq.available() > 0) {
-                    lista_Produtos.add((Produto) obj.readObject());
+                    lista_Promocoes.add((Promocao) obj.readObject());
                 }
             } else {
                 file.createNewFile();
@@ -680,5 +682,80 @@ public class ExLoja implements Serializable {
             }
         }
         return totalDesc;
+    }
+    
+    private static void gerirContas() {
+
+        Scanner s = new Scanner(System.in);
+        int op = 0;
+        while (op != 4) {
+            System.out.println("============================ Gestão de Contas =============================");
+            System.out.println("Escolhe uma opção");
+            System.out.println("1 - Ver Contas");
+            System.out.println("2 - Adicionar Conta");
+            System.out.println("3 - Remover Conta");
+            System.out.println("4 - Voltar ao Menu Principal");
+            op = s.nextInt();
+
+            switch (op) {
+                case 1: {
+                    if (!lista_Contas.isEmpty()) {
+                        System.out.println("\n__________________________________________");
+                        System.out.println("|   CÓDIGO  |    NOME    |   PREÇO(ECV)  |");
+                        System.out.println("|-----------+------------+---------------|");
+                        for (Conta c : lista_Contas) {
+                            c.imprimir();
+                        }
+                        System.out.println("|========================================|\n");
+                    } else {
+                        System.out.println("Lita vazia!");
+                    }
+                    break;
+                }
+                case 2: {
+                    adicionarContaNaLoja();
+                    break;
+                }
+                case 3: {
+                    if (!lista_Contas.isEmpty()) {
+                        removerContaDaLoja();
+                    } else {
+                        System.out.println("Lita vazia!");
+                    }
+                    break;
+                }
+                default: {
+                    System.out.println("Opção inválida!");
+
+                }
+            }
+        }
+    }
+
+    public static void adicionarContaNaLoja() {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Insere o código do Cliente");
+        int co = s.nextInt();
+        System.out.println("Insere número do Cartão do Cliente");
+        int Nc = s.nextInt();
+        System.out.println("Insere o Banco do Cliente");
+        double pr = s.nextDouble();
+        System.out.println("Insere o tipo de conta que desejas criar para este Cliente");
+        System.out.println("\n ");
+        Produto p = new Produto(co, de, pr);
+        lista_Produtos.add(p);
+    }
+
+    public static void removerContaDaLoja() {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Insere o código do Produto para que seja removido");
+        int cod = s.nextInt();
+
+        for (Produto p : lista_Produtos) {
+            if (p.getCodigo() == cod) {
+                lista_Produtos.remove(p);
+                break;
+            }
+        }
     }
 }
