@@ -5,11 +5,13 @@
  */
 package exloja;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Denilson
  */
-public class Conta {
+public class Conta implements Serializable {
     private int codigoCliente;
     private int nCartao;
     private String banco;
@@ -54,6 +56,9 @@ public class Conta {
         this.tipo = tipo;
     }
     
+    public void imprimir() {
+        System.out.printf("|%17d%3s%15d%3s%14s%3s%15s|\n", codigoCliente, "|", nCartao, "|", banco, "|", tipo);
+    } 
     
     
 }
