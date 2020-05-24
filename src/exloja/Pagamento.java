@@ -5,13 +5,14 @@
  */
 package exloja;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Denilson
  */
-public class Pagamento {
+public class Pagamento implements Serializable {
     private int nCliente;
     private int nCartao;
     private int nEncomenda;
@@ -49,11 +50,15 @@ public class Pagamento {
         this.data = data;
     }
 
-    public Pagamento(int nCliente, int nCartao, int nEncomenda, Date data) {
+    public Pagamento(int nCliente, int nCartao, int nEncomenda) {
         this.nCliente = nCliente;
         this.nCartao = nCartao;
         this.nEncomenda = nEncomenda;
-        this.data = data;
+        this.data= new Date();
+    }
+    
+    public void imprimir() {
+    System.out.printf("|%16d%3s%15d%3s%14d%3s%26s|\n", nCliente, "|", nCartao, "|", nEncomenda, "|", data);
     }
     
 }
