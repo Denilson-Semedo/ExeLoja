@@ -62,11 +62,12 @@ public class Encomenda implements Serializable{
     
    
 
-    public Encomenda(int numero, ArrayList<Produto> lista, int cc) {
+    public Encomenda(int numero, ArrayList<Produto> lista, int cc, String estado) {
         this.numero = numero;
-        this.Produtos =lista;
-        this.codigo_cliente=cc;
-        this.data= new Date();
+        this.Produtos = lista;
+        this.codigo_cliente= cc;
+        this.data = new Date();
+        this.estado = estado;
     }
     
     public double totalEncomenda(){
@@ -76,9 +77,9 @@ public class Encomenda implements Serializable{
     }
     
     public void verEncomenda(){
-        System.out.println(" Encomenda Nº "+this.numero+" Cliente Nº"+this.codigo_cliente+" Data "+this.data);
+        System.out.println(" Encomenda Nº "+this.numero+" Cliente Nº "+this.codigo_cliente+" Data "+this.data+" Estado "+this.estado);
         System.out.println("Esta encomenda tem "+this.Produtos.size()+" produtos");
-        System.out.println("========================== Listas de Produtos ===============================");
+        System.out.println("======== Listas de Produtos ==========");
            for(Produto p: this.Produtos) p.imprimir();
         System.out.println("=====================================");
         
