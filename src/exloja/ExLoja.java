@@ -356,13 +356,10 @@ public class ExLoja implements Serializable {
             switch (op) {
                 case 1: {
                     if (!lista_Produtos.isEmpty()) {
-                        System.out.println("\n=============LISTA_PRODUTOS===============");
-                        System.out.println("|   CÓDIGO  |    NOME    |   PREÇO(ECV)  |");
-                        System.out.println("|-----------+------------+---------------|");
                         for (Produto p : lista_Produtos) {
                             p.imprimir();
                         }
-                        System.out.println("|========================================|\n");
+                        
                     } else {
                         System.out.println("Lita vazia!");
                     }
@@ -502,13 +499,11 @@ public class ExLoja implements Serializable {
                 }
                 case 6: {
                     if (!lista_Pagamentos.isEmpty()) {
-                        System.out.println("\n==============================LISTA_PAGAMENTOS======================================");
-                        System.out.println("|  CODIGO CLIENTE  |    Nº CARTÃO    |  Nº ENCOMENDA  |            DATA            |");
-                        System.out.println("|------------------+-----------------+----------------+----------------------------|");
+                        
                         for (Pagamento pag : lista_Pagamentos) {
                             pag.imprimir();
                         }
-                        System.out.println("|==================================================================================|\n");
+                        
                     } else {
                         System.out.println("\nLista vazia!!");
                     }
@@ -693,13 +688,11 @@ public class ExLoja implements Serializable {
             switch (op) {
                 case 1: {
                     if (!lista_Clientes.isEmpty()) {
-                        System.out.println("\n===================================LISTA_CLIENTES=====================================");
-                        System.out.println("|  CODIGO  |    NOME    |  TELEFONE  |               EMAIL              |    MORADA    |");
-                        System.out.println("|----------+------------+------------+----------------------------------+--------------|");
+                        
                         for (Cliente c : lista_Clientes) {
                             c.imprimir();
                         }
-                        System.out.println("|======================================================================================|\n");
+                        
                     } else {
                         System.out.println("\nLista vazia!!");
                     }
@@ -864,13 +857,11 @@ public class ExLoja implements Serializable {
             switch (op) {
                 case 1: {
                     if (!lista_Contas.isEmpty()) {
-                        System.out.println("\n===============================LISTA_CONTAS=============================");
-                        System.out.println("|   CÓDIGO CLIENTE  |    Nª CARTÃO    |      BANCO     |   TIPO CONTA  |");
-                        System.out.println("|-------------------+-----------------+----------------+---------------|");
+                        
                         for (Conta c : lista_Contas) {
                             c.imprimir();
                         }
-                        System.out.println("|======================================================================|\n");
+                      
                     } else {
                         System.out.println("Lita vazia!");
                     }
